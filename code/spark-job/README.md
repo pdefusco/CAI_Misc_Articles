@@ -61,10 +61,36 @@ spark = (
 
 ## Creating the CAI Job
 
+Create a CAI Project by cloning the git repository using this url. Make sure you create the project with any Python PBJ runtimes.
+
+```
+https://github.com/pdefusco/CAI_Misc_Articles.git
+```
+
+![alt text](../../img/clone-proj.png)
+
 With the PySpark application provided in ```code/spark-job/simple-spark-app.py``` create the CAI job as shown below.
 
+```
+Name: Spark Job
+Script: code/spark-job/simple-spark-app.py
+Arguments: MyCAISparkJob 1 8g
+Editor: PBJ
+Edition: Standard
+Enable Spark: Any Spark Version OK
+Schedule: Manual
+vCPU/Memory GiB: 2 vVPU / 4GiB
+```
 
+Create and run the Job.
 
+![alt text](../../img/job-page-1.png)
+
+![alt text](../../img/job-page-2.png)
+
+![alt text](../../img/job-page-3.png)
+
+Open the Run History tab and validate that the parameters you passed were utilized by the app when configuring the SparkSession class.
 
 
 
