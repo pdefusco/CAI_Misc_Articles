@@ -1,1 +1,5 @@
-# CAI_Misc_Articles
+# CAI Misc Articles
+
+## Objective
+
+Collect miscellaneous articles and demo content about CAI. 
