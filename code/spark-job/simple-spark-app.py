@@ -49,24 +49,14 @@ from pyspark.sql.types import Row, StructField, StructType, StringType, IntegerT
 import sys
 from pyspark.sql import SparkSession
 
-def get_arg(flag, default=None):
-    """
-    Simple helper to fetch command-line arguments.
-    Example usage:
-      --app-name MyApp
-      --shuffle-partitions 50
-    """
-    if flag in sys.argv:
-        index = sys.argv.index(flag)
-        if index + 1 < len(sys.argv):
-            return sys.argv[index + 1]
-    return default
+# override sys.argv with arguments conveyed via JOB_ARGUMENTS variable:
+import sys, os, shlex
+sys.argv = ["script"] + shlex.split(os.environ.get("JOB_ARGUMENTS", ""))
 
+print(len(sys.argv))
+print(sys.argv)
 
-# Read arguments from sys.argv
-app_name = get_arg("--app-name", "DefaultSparkApp")
-shuffle_partitions = get_arg("--shuffle-partitions", "200")
-executor_memory = get_arg("--executor-memory", "2g")
+app_name, shuffle_partitions, executor_memory = sys.argv[1:4]
 
 # Build SparkSession
 spark = (
